@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = `34574368383`;
+
+    let num = str.length%3;
+    var arr = [];
+
+    if(num===1){
+        str = '00' + str;
+    }
+    if(num===2){
+        str = '0' + str;
+    }
+    let len = str.length/3;
+    for(let i=0;i<len;i++){
+        arr.push(str.substr(0,3));
+        str = str.substr(3);
+    }
+    arr[0] = parseFloat(arr[0]) + '';
+    console.log(arr.join(','));
+</script>
+</body>
+</html>
