@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    </style>
+</head>
+<body>
+    <script>
+        var str = 'abdargqsssagargsssaag';
+
+        let obj = {};
+        let arr = str.split('');
+
+        for(let i=0;i<arr.length;i++){
+            if(!obj[arr[i]]){
+                obj[arr[i]] = 1;
+            }else{
+                obj[arr[i]]++;
+            }
+        }
+
+        let mostAppeared;
+        let howManyTime = 0;
+        for(let attr in obj){
+            if(obj[attr] > howManyTime){
+                howManyTime = obj[attr];
+                mostAppeared = attr;
+            }
+        }
+        console.log(`出现次数最多的是${mostAppeared}，出现${howManyTime}次`);
+
+
+    </script>
+</body>
+</html>
