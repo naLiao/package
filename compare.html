@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //一个数a，当a小于100就返回a，否则就返回100，写出多种方法
+    var a = 150;
+    function showa(a) {
+        //一：
+        // if(a<100){
+        //     return a;
+        // }else{
+        //     return 100;
+        // }
+
+        //二：
+        // return a<100 ? a : 100;
+
+        //三：
+        // switch(a<100){
+        //     case true:
+        //         return a;
+        //         break;
+        //     case false:
+        //         return 100;
+        //         break;
+        // }
+
+        //四：
+        // return Math.min(a,100);
+
+        //五：
+        // let arr = [a,100];
+        // arr.sort(function(a,b){
+        //     return a-b;
+        // })
+        // return arr[0];
+
+        //六：
+        // let m = '' + Math.floor(a);
+        // for(let i=2;i<m.length&&a>0;i++){
+        //     return 100;
+        // }
+        // return a;
+
+        //七：
+        // let m = a<100 && a;
+        // return m = m || a;
+    }
+    alert(showa(a));
+</script>
+</body>
+</html>
