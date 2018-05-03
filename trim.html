@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let str = '     dou dou       ';
+    function trim(str) {
+        let start;
+        let end;
+        for(let i=0;i<str.length;i++){
+            if(str.charAt(i) != ' '){
+                start = i;
+                break;
+            }
+        }
+        for(let i=str.length-1;i>=0;i--){
+            if(str.charAt(i) != ' '){
+                end = i;
+                break;
+            }
+        }
+        console.log(start,end);
+        return str.substring(start,end+1);
+    }
+
+    console.log(trim(str));
+</script>
+</body>
+</html>
