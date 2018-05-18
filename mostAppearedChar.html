@@ -10,28 +10,37 @@
     <script>
         var str = 'abdargqsssagargsssaag';
 
-        let obj = {};
-        let arr = str.split('');
+        // let obj = {};
+        // let arr = str.split('');
+        // for(let i=0;i<arr.length;i++){
+        //     if(!obj[arr[i]]){
+        //         obj[arr[i]] = 1;
+        //     }else{
+        //         obj[arr[i]]++;
+        //     }
+        // }
+        // let mostAppeared;
+        // let howManyTime = 0;
+        // for(let attr in obj){
+        //     if(obj[attr] > howManyTime){
+        //         howManyTime = obj[attr];
+        //         mostAppeared = attr;
+        //     }
+        // }
+        // console.log(`出现次数最多的是${mostAppeared}，出现${howManyTime}次`);
 
-        for(let i=0;i<arr.length;i++){
-            if(!obj[arr[i]]){
-                obj[arr[i]] = 1;
-            }else{
-                obj[arr[i]]++;
-            }
-        }
-
+        //正则
+        let s = str.split('').sort().join('');
+        //aaaaaabdggggqrrssssss
         let mostAppeared;
         let howManyTime = 0;
-        for(let attr in obj){
-            if(obj[attr] > howManyTime){
-                howManyTime = obj[attr];
-                mostAppeared = attr;
+        let ss = s.replace(/([a-z])\1+/g,function ($0,$1) {
+            if($0.length>howManyTime){
+                howManyTime = $0.length;
+                mostAppeared = $0[0];
             }
-        }
-        console.log(`出现次数最多的是${mostAppeared}，出现${howManyTime}次`);
-
-
+        })
+        console.log(mostAppeared,howManyTime);
     </script>
 </body>
 </html>

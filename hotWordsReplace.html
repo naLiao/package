@@ -7,12 +7,17 @@
 <body>
     <input type="text" id="input" value="海面之上，冰山一角">
 <script>
+    let arr = ['海面','山','角'];  //敏感词数组
+    let arrR = ['*','^','#','$','@','('];  //替换敏感词的字符串数组
+    let v = arr.join('|');
+    let re = new RegExp(v,'gi');
+
     input.focus();
     document.onkeyup = function (ev) {
         let val = input.value;
         if(val){  //替换敏感词
             let s = val.replace(re, function( $0 ){
-                let temp = '';
+                let temp = '';  //每次放被替换的字符串，长度保持一致
                 for(let i=0;i<$0.length;i++){
                     temp += arrR[Math.floor(Math.random()*arrR.length)];
                 }
@@ -22,11 +27,6 @@
             alert(s);
         }
     }
-
-    let arr = ['海面','山','角'];  //敏感词数组
-    let arrR = ['*','^','#','$','@','('];  //替换敏感词的字符串数组
-    let v = arr.join('|');
-    let re = new RegExp(v,'gi');
 </script>
 </body>
 </html>
