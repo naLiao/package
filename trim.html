@@ -6,6 +6,7 @@
 </head>
 <body>
 <script>
+    //字符串方法
     let str = '     dou dou       ';
     function trim(str) {
         let start;
@@ -27,6 +28,16 @@
     }
 
     console.log(trim(str));
+
+    //正则方法
+    let str = '     dou dou       ';
+
+    //清除所有的空格，包括文字中间的空格
+    let s = str.replace(/(^|\b)\s+(\b|$)/g,'1');
+
+    //清除两边的空格
+    let ss = str.replace(/^\s+|\s+$/g,'1');
+    console.log(ss);
 </script>
 </body>
 </html>
