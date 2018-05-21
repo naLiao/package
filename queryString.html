@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+<script>
+    //字符串变对象
+    let str = 'user=doudou&password=123456';
+    let obj1 = {};
+    let arr2 = str.split('&');
+    arr2.forEach(e=>{
+        obj1[e.split('=')[0]] = e.split('=')[1]
+    });
+    console.log(obj1);
+
+    //对象变字符串
+    let obj = {
+        user: 'doudou',
+        password: 123456
+    }
+    let arr = [];
+    for(let attr in obj){
+        arr.push(attr+'='+obj[attr]);
+    }
+    console.log(arr.join('&'));
+</script>
+</html>
