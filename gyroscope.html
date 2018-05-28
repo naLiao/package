@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Title</title>
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+            height: 100%;
+            margin:0;
+            position: relative;
+            -webkit-perspective: 300px;
+            perspective: 300px;
+        }
+        #box{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -100px 0 0 -100px;
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+    <script src="../public/js/m.Tween.js"></script>
+</head>
+<body>
+<div id="box"></div>
+</body>
+<script>
+    const box = document.getElementById('box');
+    let isStart = true;
+    let lastX = 0;
+    let lastY = 0;
+    let startDeg = {};
+    let initElDeg = {};
+
+    window.addEventListener('deviceorientation',function (ev) {
+        let x = ev.beta;
+        let y = ev.gamma;
+        if(isStart){
+            //start
+            initElDeg.x = css(box,'rotateX');
+            initElDeg.y = css(box,'rotateY');
+            startDeg.x = x;
+            startDeg.y = y;
+            isStart = false;
+        }else{
+            //move
+            if(Math.abs(x-lastX)>1 || Math.abs(y-lastY)>1){
+                let dis = {};
+                dis.x = x - startDeg.x;
+                dis.y = y -startDeg.y;
+                css(box,'rotateX',initElDeg.x+dis.x);
+                css(box,'rotateY',initElDeg.y+dis.y);
+                lastX = x;
+                lastY = y;
+            }
+        }
+    })
+</script>
+</html>

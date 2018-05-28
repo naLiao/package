@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+    var lastTime = Date.now();
+    var lastAcc = {x:0,y:0,z:0};
+    var threshold = 60;
+    var isShake = false;
+    window.addEventListener('devicemotion', function(e) {
+        var nowTime = Date.now();
+        if(nowTime - lastTime < 200){
+            return;
+        }
+        var motion = e.accelerationIncludingGravity;
+        var nowAcc = {};
+        nowAcc.x = motion.x;
+        nowAcc.y = motion.y;
+        nowAcc.z = motion.z;
+        var range = Math.abs(nowAcc.x-lastAcc.x) + Math.abs(nowAcc.y-nowAcc.y) + Math.abs(nowAcc.z-lastAcc.z);
+        if(range > threshold){
+            isShake = true;
+        }
+        if(range < 15 && isShake){
+            alert("刚刚进行了摇一摇");
+            isShake = false;
+        }
+        lastAcc.x = nowAcc.x;
+        lastAcc.y = nowAcc.y;
+        lastAcc.z = nowAcc.z;
+        lastTime = nowTime;
+    });
+</script>
+</body>
+</html>
