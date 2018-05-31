@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //深度克隆
+    let arr = [1,2,3,4,5,[7,{key:'123'},null,undefined,function fn(){}]];
+    
+    function deepClone(obj) {
+        //判断传进来的参数是对象还是数组
+        let toS = Object.prototype.toString;
+        let newObj = toS.call(obj) === '[object Object]'? {}:[];
+
+        for(let attr in obj){
+            if(toS.call(obj[attr]) === '[object Object]' || toS.call(obj[attr]) === '[object Array]'){
+                newObj[attr] = deepClone(obj[attr]);
+            }else{
+                newObj[attr] = obj[attr];
+            }
+        }
+        return newObj;
+    }
+
+    let arr2 = deepClone(arr);
+    arr2[5].push(8);
+    console.log(arr2);
+</script>
+</html>
