@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" id="input">
+    <button id="btn">按钮</button>
+</body>
+<script>
+    let obj = {};
+    let nn = 5;
+    let a = Object.defineProperty(obj,'num',{
+        get(){
+            return nn++;
+        },
+        set(){
+        },
+        enumerable:true,
+        configrable:true
+    })
+    // alert(obj.num === 5 && obj.num > 5); //true
+
+    let obj2 = {};
+    let tmp;
+    let a2 = Object.defineProperty(obj2,'num',{
+        get(){
+            console.log('我要取值');
+            return 2;
+        },
+        set(val){
+            console.log('我要赋值了，我的值是'+val);
+            tmp = val;
+        },
+        enumerable:true,
+        configrable:true
+    });
+    obj2.num = 3;  //我要赋值了，我的值是3
+    console.log(obj2.num);  //我要取值
+
+    input.oninput = function () {
+        obj2.num = input.value;  //通过对象传递数据：输入框输入内容，按钮内容同步变化
+        btn.innerHTML = tmp;
+    }
+    let num1 = 0;
+    btn.onclick = function () {
+        num1++;
+        obj2.num = num1;  //通过对象传递数据：点击按钮时，输入框内容同步变化
+        input.value = tmp;
+    }
+</script>
+</html>
