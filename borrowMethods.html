@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+	/*
+	借方法就是借用数组或者对象原型中的方法
+	*/
+    function myFn(){
+    	var args = Array.prototype.slice.call(arguments);  //将arguments由类数组转为数组
+    	args.sort();
+    	return args;
+    }
+    
+    myFn('a','b','c');
+    
+    var slice = [].slice;
+    console.log(slice.call([1,2,3],1));
+</script>
+</html>
